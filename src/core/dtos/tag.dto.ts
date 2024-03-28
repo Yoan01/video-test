@@ -15,4 +15,10 @@ export class CreateTagDto {
   video: CreateVideoDto[];
 }
 
-export class UpdateTagDto extends PartialType(CreateTagDto) { }
+export class UpdateTagDto {
+  @IsString()
+  @IsNotEmpty()
+  titre ?: string;
+
+  video ?: CreateVideoDto[];
+}

@@ -2,15 +2,16 @@ import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
 import { PrismaClient, Prisma } from '@prisma/client';
 import { IDataServices } from '../../core';
 import { PrismaGenericRepository } from './generique-repo';
+import { Role, Video, User, Tag } from "../../core/entities";
 
 @Injectable()
 export class PrismaDataServices implements IDataServices, OnApplicationBootstrap {
     private prismaClient: PrismaClient = new PrismaClient();
 
-    users: PrismaGenericRepository<Prisma.UserUncheckedCreateInput, 'user'>;
-    roles: PrismaGenericRepository<Prisma.RoleUncheckedCreateInput, 'role'>;
-    videos: PrismaGenericRepository<Prisma.VideoUncheckedCreateInput, 'video'>;
-    tags: PrismaGenericRepository<Prisma.TagUncheckedCreateInput, 'tag'>;
+    users: PrismaGenericRepository<User>;
+    roles: PrismaGenericRepository<Role>;
+    videos: PrismaGenericRepository<Video>;
+    tags: PrismaGenericRepository<Tag>;
 
     onApplicationBootstrap() {
         this.users = new PrismaGenericRepository(this.prismaClient, 'user');

@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
-import { TagService } from './tag.service';
+import { TagFactoryService } from './tag-factory.service';
+import { TagUseCases } from './tag.use-case';
+import { PrismaDataServicesModule } from 'src/orm/prisma/prisma-module.module';
 
 @Module({
-  providers: [TagService]
+  imports : [PrismaDataServicesModule],
+  providers: [TagFactoryService, TagUseCases],
+  exports: [TagFactoryService, TagUseCases],
 })
 export class TagModule {}
