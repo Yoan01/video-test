@@ -4,9 +4,7 @@ import { PartialType } from '@nestjs/mapped-types';
 import { CreateTagDto } from './tag.dto';
 
 export class CreateVideoDto {
-  @IsString()
-  @IsNotEmpty()
-  id: string;
+
 
   @IsString()
   @IsNotEmpty()
