@@ -1,12 +1,12 @@
-import { Author, Book, Genre } from '../entities';
+import { Video, User, Role, Tag } from '../entities';
 import { IGenericRepository } from './generic-repository.abstract';
 
 export abstract class IDataServices {
-  abstract users: IGenericRepository<Author>;
+  abstract users: IGenericRepository<User>;
 
-  abstract roles: IGenericRepository<Book>;
+  abstract roles: IGenericRepository<Role>;
 
-  abstract tags: IGenericRepository<Genre>;
+  abstract tags: IGenericRepository<Tag>;
 
-  abstract videos: IGenericRepository<Genre>;
+  abstract videos: IGenericRepository<Video>;
 }

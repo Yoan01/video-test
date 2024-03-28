@@ -15,7 +15,3 @@ export class CreateTagDto {
 export class UpdateTagDto {
   @IsString()
   @IsNotEmpty()
-  titre?: string;
-
-  video?: CreateVideoDto[];
-}
