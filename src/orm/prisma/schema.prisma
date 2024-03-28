@@ -28,7 +28,7 @@ model Video {
   title            String
   shortDescription String
   description      String?
-  tags             Tag[]  
+  tags             Tag[]
   tagId            String
 }
 
