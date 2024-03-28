@@ -20,7 +20,4 @@ export class TagController {
     return this.tagUseCases.getTagsById(id);
   }
 
-// @Put()
-// async createTag(@Body() tag: any) {
-
-// }
+}
