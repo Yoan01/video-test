@@ -11,22 +11,22 @@ export class VideoController {
     return this.videoUseCases.getAllVideos();
   }
   @Get(':tag')
-  async getByTag(@Param('tag') tag: any) {
-    return this.videoUseCases.getUserByTag(tag);
+  async getVideoByTag(@Param('tag') tag: any) {
+    return this.videoUseCases.getVideosByTag(tag);
 
   }
   @Get(':title')
-  async getByTitle(@Param('title') title: any) {
-    return this.videoUseCases.getUsersByTitle(title);
+  async getVideoByTitle(@Param('title') title: any) {
+    return this.videoUseCases.getVideoByTitle(title);
   }
 
   @Get(':description')
-  async getByDescription(@Param('description') description: any) {
-    return this.videoUseCases.getUserByDescription(description);
+  async getVideoByDescription(@Param('description') description: any) {
+    return this.videoUseCases.getVideoByDescription(description);
   }
 
   @Get(':shortDescription')
-  async getByShortDescription(@Param('shortDescription') shortDescription: any) {
-    return this.videoUseCases.getUserByShortDescription(shortDescription);
+  async getVideoByShortDescription(@Param('shortDescription') shortDescription: any) {
+    return this.videoUseCases.getVideoByShortDescription(shortDescription);
   }
 }
