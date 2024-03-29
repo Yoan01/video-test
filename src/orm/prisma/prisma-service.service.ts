@@ -1,22 +1,28 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common';
-import { PrismaClient, Prisma } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 import { IDataServices } from '../../core';
 import { PrismaGenericRepository } from './generique-repo';
-import { Role, Video, User, Tag } from "../../core/entities";
+import { Role } from "../../core/entities";
+import { TagService } from './services/tag.service';
+import { AbsTagService } from 'src/core/abstract/service/tag-service.abstract';
+import { AbsVideoService } from 'src/core/abstract/service/video-service.abstract';
+import { VideoService } from './services/video.service';
+import { AbsUserService } from 'src/core/abstract/service/user-service.abstract';
+import { UserService } from './services/user.service';
 
 @Injectable()
 export class PrismaDataServices implements IDataServices, OnApplicationBootstrap {
     private prismaClient: PrismaClient = new PrismaClient();
 
-    users: PrismaGenericRepository<User>;
+    users: AbsUserService;
     roles: PrismaGenericRepository<Role>;
-    videos: PrismaGenericRepository<Video>;
-    tags: PrismaGenericRepository<Tag>;
+    videos: AbsVideoService;
+    tags: AbsTagService;
 
     onApplicationBootstrap() {
-        this.users = new PrismaGenericRepository(this.prismaClient, 'user');
+        this.users = new UserService(this.prismaClient);
         this.roles = new PrismaGenericRepository(this.prismaClient, 'role');
-        this.videos = new PrismaGenericRepository(this.prismaClient, 'video');
-        this.tags = new PrismaGenericRepository(this.prismaClient, 'tag');
+        this.videos = new VideoService(this.prismaClient);
+        this.tags = new TagService(this.prismaClient);
     }
 }

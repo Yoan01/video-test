@@ -31,4 +31,12 @@ export class TagUseCases {
         const author = this.authorFactoryService.updateTag(updateTagDto);
         return this.dataServices.tags.update(authorId, author);
     }
+
+    deleteTag(authorId: string): Promise<Tag> {
+        return this.dataServices.tags.delete(authorId);
+    }
+
+    getTagsByTitle(title: string): Promise<Tag[]> {
+        return this.dataServices.tags.getByTitle(title);
+    }
 }

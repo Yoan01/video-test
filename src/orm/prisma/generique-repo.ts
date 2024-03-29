@@ -2,7 +2,7 @@ import { PrismaClient } from '@prisma/client';
 import { IGenericRepository } from '../../core';
 
 export class PrismaGenericRepository<T> implements IGenericRepository<T> {
-    private _client: PrismaClient;
+    protected _client: PrismaClient;
     private _model: keyof PrismaClient;
 
     constructor(client: PrismaClient, model: keyof PrismaClient) {
@@ -30,6 +30,12 @@ export class PrismaGenericRepository<T> implements IGenericRepository<T> {
         return await (this._client[this._model] as any).update({
             where: { id },
             data: item,
+        });
+    }
+
+    async delete(id: string): Promise<T> {
+        return await (this._client[this._model] as any).delete({
+            where: { id },
         });
     }
 }

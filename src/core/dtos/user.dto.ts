@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
 import { IsString, IsNotEmpty } from 'class-validator';
-
 export class CreateUserDto {
 
   @IsString()
@@ -10,10 +8,6 @@ export class CreateUserDto {
   @IsString()
   @IsNotEmpty()
   username: string;
-
-  @IsString()
-  @IsNotEmpty()
-  role: string;
 
   @IsString()
   @IsNotEmpty()
@@ -30,8 +24,6 @@ export class UpdateUserDto {
   username?: string;
 
   @IsString()
-  @IsNotEmpty()
-  role?: string;
 
   @IsString()
   @IsNotEmpty()

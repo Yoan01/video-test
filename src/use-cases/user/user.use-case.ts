@@ -31,4 +31,11 @@ export class UserUseCases {
         const user = this.userFactoryService.updateUser(updateUserDto);
         return this.dataServices.users.update(userId, user);
     }
+
+    deleteUser(userId: string): Promise<User> {
+        return this.dataServices.users.delete(userId);
+    }
+    getUsersByRoleName(role: string): Promise<User[]> {
+        return this.dataServices.users.getByRoleName(role);
+    }
 }

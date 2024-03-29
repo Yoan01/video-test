@@ -1,8 +1,8 @@
-/* eslint-disable prettier/prettier */
+import { Role } from "./role.entity";
 export class User {
   id: string;
   password: string;
   username: string;
-  role: string;
+  role?: Role;
   roleId: string;
 }

@@ -31,4 +31,8 @@ export class RoleUseCases {
         const role = this.roleFactoryService.updateRole(updateRoleDto);
         return this.dataServices.roles.update(roleId, role);
     }
+
+    deleteRole(roleId: string): Promise<Role> {
+        return this.dataServices.roles.delete(roleId);
+    }
 }

@@ -1,12 +1,15 @@
-import { Video, User, Role, Tag } from '../entities';
+import {   Role } from '../entities';
 import { IGenericRepository } from './generic-repository.abstract';
+import { AbsTagService } from './service/tag-service.abstract';
+import { AbsUserService } from './service/user-service.abstract';
+import { AbsVideoService } from './service/video-service.abstract';
 
 export abstract class IDataServices {
-  abstract users: IGenericRepository<User>;
+  abstract users: AbsUserService;
 
   abstract roles: IGenericRepository<Role>;
 
-  abstract tags: IGenericRepository<Tag>;
+  abstract tags: AbsTagService;
 
-  abstract videos: IGenericRepository<Video>;
+  abstract videos: AbsVideoService;
 }

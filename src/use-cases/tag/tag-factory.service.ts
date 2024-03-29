@@ -6,9 +6,7 @@ import { CreateTagDto, UpdateTagDto } from '../../core/dtos';
 export class TagFactoryService {
     createNewTag(createTagDto: CreateTagDto) {
         const newTag = new Tag();
-        newTag.id = createTagDto.id;
         newTag.titre = createTagDto.titre;
-        newTag.video = createTagDto.video;
 
 
         return newTag;
@@ -18,7 +16,6 @@ export class TagFactoryService {
         const newTag = new Tag();
 
         newTag.titre = updateTagDto.titre;
-        newTag.video = updateTagDto.video;
 
         return newTag;
     }

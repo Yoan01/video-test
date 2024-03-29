@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { Tag } from "./tag.entity";
 export class Video {
 
@@ -7,7 +6,7 @@ export class Video {
   title: string;
   shortDescription: string;
   description: string;
-  tags: Tag[];
+  tags?: Tag[];
   tagId: string;
 
 }
