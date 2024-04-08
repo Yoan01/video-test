@@ -39,15 +39,8 @@ export class VideoUseCases {
         return this.dataServices.videos.getVideosByTag(tag);
     }
 
-    getVideoByTitle(title: string): Promise<Video[]> {
-        return this.dataServices.videos.getVideoByTitle(title);
+    searchVideos(title: string): Promise<Video[]> {
+        return this.dataServices.videos.searchVideos(title);
     }
 
-    getVideoByDescription(description: string): Promise<Video[]> {
-        return this.dataServices.videos.getVideoByDescription(description);
-    }
-
-    getVideoByShortDescription(shortDescription: string): Promise<Video[]> {
-        return this.dataServices.videos.getVideoByShortDescription(shortDescription);
-    }
 }

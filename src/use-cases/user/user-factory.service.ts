@@ -8,7 +8,6 @@ export class UserFactoryService {
         const newUser = new User();
         newUser.password = createUserDto.password;
         newUser.username = createUserDto.username;
-        newUser.role = createUserDto.role;
         newUser.roleId = createUserDto.roleId;
 
         return newUser;
@@ -18,7 +17,6 @@ export class UserFactoryService {
         const newUser = new User();
         newUser.password = updateUserDto.password;
         newUser.username = updateUserDto.username;
-        newUser.role = updateUserDto.role;
         newUser.roleId = updateUserDto.roleId;
 
         return newUser;

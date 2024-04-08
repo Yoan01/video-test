@@ -10,7 +10,7 @@ export class VideoService extends PrismaGenericRepository<Video> {
     private get client() {
         return this._client;
     }
-    
+
     // Méthode pour récupérer des vidéos par tag
     async getVideosByTag(tag: string): Promise<Video[]> {
         return this.client.video.findMany({
@@ -25,34 +25,23 @@ export class VideoService extends PrismaGenericRepository<Video> {
     }
 
     // Méthode pour récupérer des vidéos par titre
-    async getVideoByTitle(title: string): Promise<Video[]> {
+    async searchVideos(searchString: string): Promise<Video[]> {
         return this.client.video.findMany({
             where: {
-                title: {
-                    contains: title,
-                },
-            },
-        });
-    }
-
-    // Méthode pour récupérer des vidéos par description
-    async getVideoByDescription(description: string): Promise<Video[]> {
-        return this.client.video.findMany({
-            where: {
-                description: {
-                    contains: description,
-                },
-            },
-        });
-    }
-
-    // Méthode pour récupérer des vidéos par description courte
-    async getVideoByShortDescription(shortDescription: string): Promise<Video[]> {
-        return this.client.video.findMany({
-            where: {
-                shortDescription: {
-                    contains: shortDescription,
-                },
+                OR: [
+                    {
+                        title: {
+                            contains: searchString,
+                            mode: 'insensitive', // Pour une recherche insensible à la casse
+                        },
+                    },
+                    {
+                        description: {
+                            contains: searchString,
+                            mode: 'insensitive', // Pour une recherche insensible à la casse
+                        },
+                    },
+                ],
             },
         });
     }

@@ -38,4 +38,8 @@ export class UserUseCases {
     getUsersByRoleName(role: string): Promise<User[]> {
         return this.dataServices.users.getByRoleName(role);
     }
+
+    searchUsers(username: string): Promise<User[]> {
+        return this.dataServices.users.getByUsername(username);
+    }
 }

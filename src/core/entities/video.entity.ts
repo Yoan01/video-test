@@ -1,4 +1,4 @@
-import { Tag } from "./tag.entity";
+
 export class Video {
 
   id: string;
@@ -6,7 +6,5 @@ export class Video {
   title: string;
   shortDescription: string;
   description: string;
-  tags?: Tag[];
-  tagId: string;
 
 }

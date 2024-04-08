@@ -8,7 +8,7 @@ import { PrismaGenericRepository } from "../generique-repo";
 import { PrismaClient } from "@prisma/client";
 import { AbsTagService } from "src/core/abstract/service/tag-service.abstract";
 
-export class TagService extends PrismaGenericRepository<Tag> implements AbsTagService{
+export class TagService extends PrismaGenericRepository<Tag> implements AbsTagService {
     constructor(prismaClient: PrismaClient) {
         super(prismaClient, 'tag');
     }
@@ -26,4 +26,5 @@ export class TagService extends PrismaGenericRepository<Tag> implements AbsTagSe
             },
         });
     }
+
 }

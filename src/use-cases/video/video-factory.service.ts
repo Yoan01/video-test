@@ -10,7 +10,7 @@ export class VideoFactoryService {
         newVideo.title = createVideoDto.title;
         newVideo.shortDescription = createVideoDto.shortDescription;
         newVideo.description = createVideoDto.description;
-        newVideo.tagId = createVideoDto.tagId;
+
 
         return newVideo;
     }
@@ -21,7 +21,7 @@ export class VideoFactoryService {
         newVideo.title = updateVideoDto.title;
         newVideo.shortDescription = updateVideoDto.shortDescription;
         newVideo.description = updateVideoDto.description;
-        newVideo.tagId = updateVideoDto.tagId;
+
 
         return newVideo;
     }

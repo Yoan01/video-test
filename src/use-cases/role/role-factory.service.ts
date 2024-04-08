@@ -8,7 +8,6 @@ export class RoleFactoryService {
         const newRole = new Role();
         newRole.titre = createRoleDto.titre;
         newRole.description = createRoleDto.description;
-        newRole.users = createRoleDto.users;
 
         return newRole;
     }
@@ -22,8 +21,6 @@ export class RoleFactoryService {
         
             newRole.description = updateRoleDto.description;
         
-        
-            newRole.users = updateRoleDto.users;
         
 
         return newRole;
