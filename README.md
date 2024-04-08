@@ -1,73 +1,72 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+# Documentation du Projet NestJS
 
-## Description
+## Organisation du projet
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+Ce projet NestJS est organisé en respectant les principes de l'architecture propre (Clean Architecture), favorisant une séparation claire des responsabilités. Voici une brève description de la structure:
 
-## Installation
+- `dist/`: Contient le code JavaScript transpilé généré à partir du code source TypeScript.
+- `node_modules/`: Répertoire des dépendances Node.js installées.
+- `src/`: Dossier source contenant le code TypeScript du projet, structuré comme suit:
+  - `controllers/`: Gère les requêtes HTTP entrantes et les réponses sortantes.
+  - `core/`: Contient la logique métier centrale du projet, divisée en services abstraits et services concrets.
+  - `dtos/`: Contient les Data Transfer Objects qui définissent la forme des données.
+  - `entities/`: Définit les modèles d'entreprise représentant les données de l'application.
+  - `orm/`: Contient la configuration de l'Object-Relational Mapping avec Prisma.
+  - `use-cases/`: Contient la logique métier spécifique à l'application, organisée par domaine.
+  - `index.ts`: Fichier central d'exportation des entités.
+
+## Installation et Lancement
+
+Pour installer les dépendances et lancer le projet:
+
+1. Installez Node.js et npm si ce n'est pas déjà fait.
+2. Clonez ce dépôt sur votre machine locale.
+3. Naviguez dans le dossier du projet et exécutez la commande suivante pour installer les dépendances:
 
 ```bash
-$ npm install
+npm install
 ```
 
-## Running the app
+4. Pour lancer l'application en mode développement, exécutez:
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+npm run start:dev
 ```
 
-## Test
+L'application démarre maintenant en mode développement, en écoutant les modifications des fichiers source pour recompiler automatiquement et recharger l'application.
+
+## Utilisation de Prisma
+
+Prisma est utilisé comme ORM (Object-Relational Mapping) pour interagir de manière intuitive avec la base de données. Avec Prisma, vous pouvez définir votre modèle de données, effectuer des migrations de base de données et interroger vos données de manière type-safe.
+
+### Migrations de la base de données
+
+Pour créer ou mettre à jour la structure de votre base de données en fonction de votre schéma Prisma, exécutez:
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+npx prisma migrate dev
 ```
 
-## Support
+### Accès au Client Prisma
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Le client Prisma est accessible dans les services de l'application et peut être utilisé pour effectuer des requêtes de base de données.
 
-## Stay in touch
+```typescript
+import { PrismaService } from './prisma/prisma.service';
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+// Utilisez PrismaService dans vos services
+```
 
-## License
+## Swagger
 
-Nest is [MIT licensed](LICENSE).
+Le projet est configuré pour générer une documentation d'API interactive via Swagger. Cette documentation est accessible à l'adresse suivante une fois l'application lancée:
+
+```
+http://localhost:3000/api
+```
+
+Visitez cette URL dans votre navigateur pour voir l'interface utilisateur de Swagger, où vous pouvez consulter et tester les différentes routes API disponibles.
+
+---
