@@ -22,7 +22,4 @@ jobs:
         run: npm install
 
       - name: Run tests with coverage
-        run: npm run test:cov
-
-      - name: Update Coverage Badge
-        uses: we-cli/coverage-badge-action@main
+        run: npm run test
