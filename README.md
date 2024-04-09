@@ -22,15 +22,10 @@ Ce projet NestJS est organisé en respectant les principes de l'architecture pro
 
 Pour lancer l'application avec Docker, assurez-vous d'avoir Docker installé sur votre machine. Ensuite, exécutez les commandes suivantes:
 
-1. Construisez l'image Docker:
+1. Faire le Docker compose up
 
 ```bash
-docker build -t app-video-test .
-```
-2. Lancez le conteneur Docker:
-
-```bash
-docker run -p 3000:3000 app-video-test
+docker-compose up --build
 ```
 
 ### En local : 

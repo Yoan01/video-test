@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  video-lib:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+      DEBUG: 'true'
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - postgres
+    networks:
+      - video-lib-network
+
+  postgres:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_USER: maxime.tancrede
+      POSTGRES_PASSWORD: h7swZISOHj4a
+      POSTGRES_DB: video-lib
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - video-lib-network
+
+networks:
+  video-lib-network:
+
+volumes:
+  postgres-data:
