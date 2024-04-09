@@ -13,6 +13,9 @@ RUN npm install
 # Copiez le reste des fichiers de l'application
 COPY . .
 
+# Générer le schéma Prisma
+RUN npx prisma generate
+
 # Exposez le port sur lequel votre application écoute
 EXPOSE 3000
 
