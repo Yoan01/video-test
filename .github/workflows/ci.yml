@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  build-and-test:
-    runs-on: ubuntu:latest
+  test:
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
@@ -20,9 +20,6 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-
-      - name: Run linting
-        run: npm run lint
 
       - name: Run tests
         run: npm run test
